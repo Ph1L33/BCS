@@ -1,4 +1,4 @@
-resource "aws_security_group" "app1-80-sg01-servers" {
+resource "aws_security_group" "app1_80_sg01_servers" {
   name        = "app1-80-sg01-servers"
   description = "app1-80-sg01-servers"
   vpc_id      = aws_vpc.app1.id
@@ -51,6 +51,14 @@ resource "aws_security_group" "app1-443-sg02-LB01" {
   name        = "app1-443-sg02-LB01"
   description = "app1-443-sg02-LB01"
   vpc_id      = aws_vpc.app1.id
+
+ingress {
+    description = "LBExternal"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   ingress {
     description = "MyHomePage"

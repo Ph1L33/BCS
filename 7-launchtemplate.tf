@@ -1,11 +1,11 @@
 resource "aws_launch_template" "app1_LT" {
   name_prefix   = "app1_LT"
-  image_id      = "ami-06ed60ed1369448bd"  
+  image_id      = "ami-0669b163befffbdfc"  
   instance_type = "t2.micro"
 
   key_name = "MyLinuxBox"
 
-  vpc_security_group_ids = [aws_security_group.app1-80-sg01-servers.id]
+  vpc_security_group_ids = [aws_security_group.app1_80_sg01_servers.id]
 
   user_data = base64encode(<<-EOF
     #!/bin/bash
@@ -58,8 +58,8 @@ resource "aws_launch_template" "app1_LT" {
     tags = {
       Name    = "app1_LT"
       Service = "application1"
-      Owner   = "Chewbacca"
-      Planet  = "Mustafar"
+      Owner   = "Phil"
+      Planet  = "Earth 616"
     }
   }
 
